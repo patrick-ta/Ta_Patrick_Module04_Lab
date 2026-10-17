@@ -10,7 +10,9 @@ inline Change Damage(float Health,float Maximum,float Amount)
     // LAB 1: reject non-positive/non-finite damage and damage to a dead target.
     // Calculate clamped health. Return the value, whether it changed, and
     // whether it crossed from alive to dead. Do not publish events in this pure rule.
-    return {Health,false,false};
+    if (!std::isfinite(Amount) || Amount <= 0.f || Health <= 0.f) return { Health,false,false };
+    const float Next = std::max(0.f, std::min(Maximum, Health - Amount));
+    return { Next,Next != Health,Next == 0.f };
 }
 inline Change Heal(float Health,float Maximum,float Amount)
 {
