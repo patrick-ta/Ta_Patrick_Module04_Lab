@@ -1,0 +1,6 @@
+Case,Expected,Actual,Pass or Fail,Steps
+100 minus 25,"75; one change; no death",,,
+Overkill,"0; one death",,,
+Negative and non-finite,"No change; no events",,,
+Already dead,"No repeated death",,,
+Observer detached or destroyed,"Health still works",,,

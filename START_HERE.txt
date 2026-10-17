@@ -1,0 +1,30 @@
+WEEK 4 LAB STARTER - Unreal 5.8.3, Windows
+
+Extract the whole ZIP first. Do not open a project inside a ZIP.
+Open CourseGame.uproject, then Content/Course/Maps/L_Week04 and Play.
+If the Unreal association opens the wrong engine, run in PowerShell here:
+powershell -ExecutionPolicy Bypass -File .\Open.ps1 -EngineRoot "D:\UEFN\UE_5.8"
+Replace the example engine path with your own installation.
+
+This project contains its map, sprites, input assets and crate Blueprint.
+No import kit or Week 3 merge is required.
+The starter intentionally leaves damage, notification, observer and Blueprint tasks unfinished. Health stays 100 until implemented.
+
+After C++ edits, save files and CLOSE UNREAL before building:
+powershell -ExecutionPolicy Bypass -File .\Build.ps1 -EngineRoot "D:\UEFN\UE_5.8"
+Requires an Unreal-compatible MSVC C++ toolchain and Windows SDK.
+Supplied editor binaries match Unreal 5.8.3 CL58210709. Different builds may require recompilation.
+Open source files directly in Source/CourseGame/Week04 if Unreal cannot open the IDE.
+
+Completed-lab automated test (close Unreal first):
+powershell -ExecutionPolicy Bypass -File .\Verify.ps1 -EngineRoot "D:\UEFN\UE_5.8"
+Add -Baseline ONLY when checking the original unfinished starter.
+Reports: Saved/Verification/Week04.csv and Verify.log.
+The baseline does not prove completion. Read the student handout for manual cases.
+
+Controls: number row 1=damage25, 2=overkill500, 3=-10, 4=zero,
+5=NaN, 6=infinity, 7=heal25; T=fresh crate; O=toggle observer;
+K=destroy observer; P=damage player; R=respawn; A/D=walk; Space=jump.
+Lecture interfaces: E=select/interact; G=cache target; X=destroy cache target; V=use cache.
+Click the Play viewport first. Blue foreground is nonblocking.
+The independent assignment is Student Workbook page 9.
