@@ -11,6 +11,7 @@ void AHealthObserver::AttachToHealth(UHealthComponent* NewSource)
     NewSource->OnHealthChanged.AddUniqueDynamic(this, &AHealthObserver::Changed);
     NewSource->OnDied.AddUniqueDynamic(this, &AHealthObserver::Died);
     LastHealth = NewSource->GetHealth();
+    ++Snapshots;
 }
 void AHealthObserver::Detach()
 {
