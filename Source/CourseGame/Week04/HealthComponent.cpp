@@ -15,6 +15,12 @@ void UHealthComponent::ApplyDamage(float Amount)
     // Publish OnDied exactly once for the alive-to-dead transition.
     // Use bPublishing to reject recursive mutation during notification.
     // No HUD or optional observer may be required for this operation.
+    const auto Change = Week04Rules::Damage(Health, MaxHealth, Amount);
+    if (!Change.Changed) return;
+    Health = Change.Value;
+    TGuardValue<bool> Guard(bPublishing, true);
+    OnHealthChanged.Broadcast(Health, MaxHealth);
+    if (Change.Died) OnDied.Broadcast();
 }
 void UHealthComponent::Heal(float Amount)
 {
